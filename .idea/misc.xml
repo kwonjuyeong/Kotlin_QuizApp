@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/kjy1h/AndroidStudioProjects/KotlinQuizApp/app/src/main/res/drawable/a.xml" value="0.165" />
+        <entry key="..\:/Users/kjy1h/AndroidStudioProjects/KotlinQuizApp/app/src/main/res/drawable/default_option_border_bg.xml" value="0.165" />
         <entry key="..\:/Users/kjy1h/AndroidStudioProjects/KotlinQuizApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.367" />
         <entry key="..\:/Users/kjy1h/AndroidStudioProjects/KotlinQuizApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/kjy1h/AndroidStudioProjects/KotlinQuizApp/app/src/main/res/layout/activity_quiz_questions.xml" value="0.36614583333333334" />
