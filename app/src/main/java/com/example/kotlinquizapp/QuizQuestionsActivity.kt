@@ -6,10 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import androidx.core.content.ContextCompat
 import org.w3c.dom.Text
 
@@ -63,7 +60,8 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     //main에 있던 코드를 선택 - 리팩터 - Function으로 함수를 만들어줘서 간단하게 사용할 수 있게 만듬.
     //문제를 세팅해주는 함수
     private fun setQuestion() {
-
+        //defaultOptionView로 처음 문제를 불러올 때 answerView함수에서 지정된 색을 없애줌ㅇㅂ
+        defaultOptionsView()
         val question: Question? = mQuestionList!![mCurrentPosition - 1]
 
         progressBar?.progress = mCurrentPosition
@@ -140,10 +138,62 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.btn_submit -> {
+                //SelectedOption 초기값은 0이기 때문에 0으로 설정
+                if(mSelectedOptionPosition == 0){
+                    mCurrentPosition++
+                    when{
 
+                        mCurrentPosition <= mQuestionList!!.size -> {
+                            setQuestion()
+                        }else -> {
+                        //지정된 문제가 다 끝났을 때
+                        Toast.makeText(this, "You made it to the end", Toast.LENGTH_SHORT).show()
 
+                        }
+                    }
+                }else{
+                    val question = mQuestionList?.get(mCurrentPosition -1)
+                    if(question!!.correctAnswer != mSelectedOptionPosition){
+                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+                    }
+                    answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
+
+                    //다음 문제로 이동하는 버튼. 끝나면 Finish를 띄어줌.
+                    if(mCurrentPosition == mQuestionList!!.size){
+                        btnSubmit?.text = "FINISH"
+                    }else{
+                        btnSubmit?.text = "Go To Next Level"
+                    }
+                    //다시 0으로 초기화해줘야함.
+                    mSelectedOptionPosition = 0
+                }
             }
-
         }
+    }
+
+    private fun answerView(answer:Int, drawableView:Int){
+        when(answer){
+            1->{
+                tvOptionOne?.background = ContextCompat.getDrawable(
+                    this, drawableView
+                )
+            }
+            2->{
+                tvOptionTwo?.background = ContextCompat.getDrawable(
+                    this, drawableView
+                )
+            }
+            3->{
+                tvOptionThree?.background = ContextCompat.getDrawable(
+                    this, drawableView
+                )
+            }
+            4->{
+                tvOptionFour?.background = ContextCompat.getDrawable(
+                    this, drawableView
+                )
+            }
+        }
+
     }
 }

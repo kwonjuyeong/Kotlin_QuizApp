@@ -6,7 +6,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:gravity="center"
-android:background="@drawable/ic_bg"
+android:background="@drawable/backg"
 android:orientation="vertical"
 tools:context=".MainActivity">
 
@@ -16,8 +16,8 @@ tools:context=".MainActivity">
     android:layout_height="wrap_content"
     android:layout_marginBottom="30dp"
     android:gravity="center"
-    android:text="Quiz App!"
-    android:textColor="@color/white"
+    android:text="Quizzle!"
+    android:textColor="@color/black"
     android:textSize="25sp"
     android:textStyle="bold" />
 
